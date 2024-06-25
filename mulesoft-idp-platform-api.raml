@@ -23,11 +23,11 @@ protocols:
   - HTTPS
 /idp/api/{apiVersion}/organizations/{orgId}/actions:
   uriParameters:
-    orgId:
-      type: field-orgId
-      required: true
     apiVersion:
       type: field-runtimeServiceApiVersion
+      required: true
+    orgId:
+      type: field-orgId
       required: true
   get:
     displayName: IDP - Platform - ActionsList
@@ -35,7 +35,7 @@ protocols:
       "200":
         body:
           example:
-            strict: true
+            strict: false
             value:
               actions:
                 -
@@ -1084,7 +1084,10 @@ protocols:
     securedBy: []
 securedBy:
   - mulesoft-basic-login
+
+
 types:
+
   field-orgId:
     description: |
       MuleSoft Anypoint Organization Id
@@ -1094,6 +1097,7 @@ types:
     example: eca25329-9592-4ff1-9054-1b08d103b991
     type: string
     pattern: "[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?"
+
   field-runtimeServiceApiVersion:
     description: |-
       IDP Runtime Service API Version
