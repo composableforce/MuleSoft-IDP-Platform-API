@@ -1,2 +1,1105 @@
 #%RAML 1.0
+securitySchemes:
+  mulesoft-basic-login:
+    type: Basic Authentication
+    describedBy:
+      responses:
+        "200":
+          body:
+            application/json:
+              properties:
+                access_token:
+                  example: d127e2ec-a703-4e2a-8629-e9158804748ble
+                  type: string
+                token_type:
+                  example: bearer
+                  type: string
 title: MuleSoft IDP Platform API
+baseUri: https://anypoint.mulesoft.com
+mediaType:
+  - application/json
+version: v1
+protocols:
+  - HTTPS
+/idp/api/{apiVersion}/organizations/{orgId}/actions:
+  get:
+    displayName: IDP - Platform - ActionsList
+    responses:
+      "200":
+        body:
+          example:
+            strict: true
+            value:
+              actions:
+                -
+                  id: e8f80563-9d5f-4a81-b419-0d3e4f7d2f9a
+                  organizationId: eca25329-9592-4ff1-9054-1b08d103b991
+                  name: FAKTURA - DK - Teleco
+                  description: StoreDrenge.dk
+                  type: INVOICE
+                  configuration:
+                    content:
+                      output:
+                        fields:
+                          tax:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          total:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          emails:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          dueDate:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          parties:
+                            buyer:
+                              city:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              name:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              state:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              street:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              address:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              country:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              zipCode:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              headerUrl:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              headerName:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              headerPhone:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              addressBlock:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              headerAddress:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                            billTo:
+                              city:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              name:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              state:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              street:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              address:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              country:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              zipCode:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              addressBlock:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                            shipTo:
+                              city:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              name:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              state:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              street:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              address:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              country:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              zipCode:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              addressBlock:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                            vendor:
+                              city:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              name:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              state:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              street:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              address:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              country:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              zipCode:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              headerUrl:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              headerName:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              headerPhone:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              addressBlock:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              headerAddress:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                          subtotal:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          amountDue:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          signatures:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          invoiceDate:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          paymentTerms:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          invoiceNumber:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          purchaseOrderNumber:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                        tables:
+                          table1:
+                            price:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            endDate:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            quantity:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            startDate:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            unitPrice:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            lineNumber:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            description:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            productCode:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            productType:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            expectedDate:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            unitOfMeasure:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            additionalCharges:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            purchaseOrderNumber:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                        prompts: {}
+                    version: 1.0.0
+                  createdBy: 4d4fda9b-b772-4085-ac61-078af3b54543
+                  createdAt: 2024-05-13T10:04:44.110737Z
+                  updatedAt: 2024-05-13T10:04:44.110737Z
+                  registration:
+                    status: REGISTERED
+                    message: ""
+                -
+                  id: d9402a9d-86d4-4797-b47e-76a00e04092d
+                  organizationId: eca25329-9592-4ff1-9054-1b08d103b991
+                  name: Generic - EEA and EFTA Driving Licence
+                  description: https://en.wikipedia.org/wiki/European_driving_licence#Standard_data_field_labelling
+                  type: GENERIC
+                  configuration:
+                    content:
+                      output:
+                        prompts:
+                          dob:
+                            hidden: false
+                            prompt: what is the date of birth found next to the left label "3."
+                            source: document
+                            required: true
+                            confidenceThreshold: 80
+                          surname:
+                            hidden: false
+                            prompt: what is the surname found next to the left label "1."
+                            source: document
+                            required: true
+                            confidenceThreshold: 80
+                          other_names:
+                            hidden: false
+                            prompt: what are the names found next to the left label "2."
+                            source: document
+                            required: true
+                            confidenceThreshold: 80
+                          entitlements:
+                            hidden: false
+                            prompt: read the letters including spaces but ignoring the forward slashes that are found to right of the label "9." and sometimes underneath the photo
+                            source: document
+                            required: false
+                            confidenceThreshold: 80
+                          date_of_issue:
+                            hidden: false
+                            prompt: what is the date of issue next to the left label "4a"
+                            source: document
+                            required: true
+                            confidenceThreshold: 80
+                          date_of_expiry:
+                            hidden: false
+                            prompt: what is the date of expiry next to the left label "4.b"
+                            source: document
+                            required: true
+                            confidenceThreshold: 80
+                          licence_number:
+                            hidden: false
+                            prompt: what is the licence number next to the left label "5."
+                            source: document
+                            required: true
+                            confidenceThreshold: 80
+                          issuing_authority:
+                            hidden: false
+                            prompt: what is the issuing authority next to the left label "4c"
+                            source: document
+                            required: true
+                            confidenceThreshold: 80
+                    version: 1.0.0
+                  createdBy: 4d4fda9b-b772-4085-ac61-078af3b54543
+                  createdAt: 2024-05-13T09:02:57.100353Z
+                  updatedAt: 2024-05-22T19:56:54.727852Z
+                  registration:
+                    status: REGISTERED
+                    message: ""
+                -
+                  id: 90c3e286-72b5-42ca-92d0-22f86ea8d766
+                  organizationId: eca25329-9592-4ff1-9054-1b08d103b991
+                  name: IDP-PO-CD656092-BurlingtonTextiles
+                  description: CD656092-BurlingtonTextiles Purchase Order
+                  type: PURCHASE_ORDER
+                  configuration:
+                    content:
+                      output:
+                        fields:
+                          fob:
+                            hidden: true
+                            required: false
+                            confidenceThreshold: 80
+                          tax:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          total:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          emails:
+                            hidden: true
+                            required: false
+                            confidenceThreshold: 80
+                          carrier:
+                            hidden: true
+                            required: false
+                            confidenceThreshold: 80
+                          parties:
+                            buyer:
+                              city:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              name:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              state:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              street:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              address:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              country:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              zipCode:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              headerUrl:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              headerName:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              headerPhone:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              addressBlock:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              headerAddress:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                            billTo:
+                              city:
+                                hidden: true
+                                required: false
+                                confidenceThreshold: 80
+                              name:
+                                hidden: true
+                                required: false
+                                confidenceThreshold: 80
+                              state:
+                                hidden: true
+                                required: false
+                                confidenceThreshold: 80
+                              street:
+                                hidden: true
+                                required: false
+                                confidenceThreshold: 80
+                              address:
+                                hidden: true
+                                required: false
+                                confidenceThreshold: 80
+                              country:
+                                hidden: true
+                                required: false
+                                confidenceThreshold: 80
+                              zipCode:
+                                hidden: true
+                                required: false
+                                confidenceThreshold: 80
+                              addressBlock:
+                                hidden: true
+                                required: false
+                                confidenceThreshold: 80
+                            shipTo:
+                              city:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              name:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              state:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              street:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              address:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              country:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              zipCode:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              addressBlock:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                            vendor:
+                              city:
+                                hidden: true
+                                required: false
+                                confidenceThreshold: 80
+                              name:
+                                hidden: true
+                                required: false
+                                confidenceThreshold: 80
+                              state:
+                                hidden: true
+                                required: false
+                                confidenceThreshold: 80
+                              street:
+                                hidden: true
+                                required: false
+                                confidenceThreshold: 80
+                              address:
+                                hidden: true
+                                required: false
+                                confidenceThreshold: 80
+                              country:
+                                hidden: true
+                                required: false
+                                confidenceThreshold: 80
+                              zipCode:
+                                hidden: true
+                                required: false
+                                confidenceThreshold: 80
+                              headerUrl:
+                                hidden: true
+                                required: false
+                                confidenceThreshold: 80
+                              headerName:
+                                hidden: true
+                                required: false
+                                confidenceThreshold: 80
+                              headerPhone:
+                                hidden: true
+                                required: false
+                                confidenceThreshold: 80
+                              addressBlock:
+                                hidden: true
+                                required: false
+                                confidenceThreshold: 80
+                              headerAddress:
+                                hidden: true
+                                required: false
+                                confidenceThreshold: 80
+                          shipVia:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          subtotal:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          amountDue:
+                            hidden: true
+                            required: false
+                            confidenceThreshold: 80
+                          signatures:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 70
+                          deliveryDate:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          paymentTerms:
+                            hidden: true
+                            required: false
+                            confidenceThreshold: 80
+                          requiredByDate:
+                            hidden: true
+                            required: false
+                            confidenceThreshold: 80
+                          purchaseOrderDate:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          purchaseOrderNumber:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                        tables:
+                          table1:
+                            price:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            quantity:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            unitPrice:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            lineNumber:
+                              hidden: true
+                              required: false
+                              confidenceThreshold: 80
+                            description:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            productCode:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            productType:
+                              hidden: true
+                              required: false
+                              confidenceThreshold: 80
+                            vendorQuote:
+                              hidden: true
+                              required: false
+                              confidenceThreshold: 80
+                            expectedDate:
+                              hidden: true
+                              required: false
+                              confidenceThreshold: 80
+                            maintenanceTo:
+                              hidden: true
+                              required: false
+                              confidenceThreshold: 80
+                            unitOfMeasure:
+                              hidden: true
+                              required: false
+                              confidenceThreshold: 80
+                            maintenanceFrom:
+                              hidden: true
+                              required: false
+                              confidenceThreshold: 80
+                            additionalCharges:
+                              hidden: true
+                              required: false
+                              confidenceThreshold: 80
+                            purchaseOrderNumber:
+                              hidden: true
+                              required: false
+                              confidenceThreshold: 80
+                        prompts:
+                          customerNumber:
+                            hidden: false
+                            prompt: What is the customer number found underneath the top label of "CUSTOMER NO."
+                            source: document
+                            required: true
+                            confidenceThreshold: 80
+                          shippingHandlingCost:
+                            hidden: false
+                            prompt: What is the price of Shipping found next to the label "SHIPPING/HANDLING"
+                            source: document
+                            required: true
+                            confidenceThreshold: 80
+                    version: 1.0.0
+                  createdBy: 4d4fda9b-b772-4085-ac61-078af3b54543
+                  createdAt: 2024-05-17T05:30:16.928867Z
+                  updatedAt: 2024-05-17T07:40:56.561392Z
+                  registration:
+                    status: REGISTERED
+                    message: ""
+                -
+                  id: 828fccb2-dacb-4f88-bb83-ebe81b612342
+                  organizationId: eca25329-9592-4ff1-9054-1b08d103b991
+                  name: Invoice-AWS
+                  description: AWS Vat Invoice
+                  type: INVOICE
+                  configuration:
+                    content:
+                      output:
+                        fields:
+                          tax:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          total:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          emails:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          dueDate:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          parties:
+                            buyer:
+                              city:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              name:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              state:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              street:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              address:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              country:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              zipCode:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              headerUrl:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              headerName:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              headerPhone:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              addressBlock:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              headerAddress:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                            billTo:
+                              city:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              name:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              state:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              street:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              address:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              country:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              zipCode:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              addressBlock:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                            shipTo:
+                              city:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              name:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              state:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              street:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              address:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              country:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              zipCode:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              addressBlock:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                            vendor:
+                              city:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              name:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              state:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              street:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              address:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              country:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              zipCode:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              headerUrl:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              headerName:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              headerPhone:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              addressBlock:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                              headerAddress:
+                                hidden: false
+                                required: false
+                                confidenceThreshold: 80
+                          subtotal:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          amountDue:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          signatures:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          invoiceDate:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          paymentTerms:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          invoiceNumber:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                          purchaseOrderNumber:
+                            hidden: false
+                            required: false
+                            confidenceThreshold: 80
+                        tables:
+                          table1:
+                            price:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            endDate:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            quantity:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            startDate:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            unitPrice:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            lineNumber:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            description:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            productCode:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            productType:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            expectedDate:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            unitOfMeasure:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            additionalCharges:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                            purchaseOrderNumber:
+                              hidden: false
+                              required: false
+                              confidenceThreshold: 80
+                        prompts:
+                          AccountNumber:
+                            hidden: false
+                            prompt: What is the Account number found underneath the top label of "Account number:"
+                            source: document
+                            required: false
+                            confidenceThreshold: 80
+                    version: 1.0.0
+                  createdBy: 4d4fda9b-b772-4085-ac61-078af3b54543
+                  createdAt: 2024-05-13T09:34:43.271247Z
+                  updatedAt: 2024-05-13T09:40:32.865978Z
+                  registration:
+                    status: REGISTERED
+                    message: ""
+                -
+                  id: d47968ff-5e3a-4458-af1d-8caa411fc9d9
+                  organizationId: eca25329-9592-4ff1-9054-1b08d103b991
+                  name: Supplier Invoice
+                  description: CRUISE BOOKING CONFIRMATION
+                  type: GENERIC
+                  configuration:
+                    content:
+                      output:
+                        prompts:
+                          shipName:
+                            hidden: false
+                            prompt: What is the ship name found on page ONE to the left of label named "Ship:"
+                            source: document
+                            required: false
+                            confidenceThreshold: 80
+                          guest2Name:
+                            hidden: false
+                            prompt: "What is the guest name found below label \"Guest #2:\" "
+                            source: document
+                            required: false
+                            confidenceThreshold: 80
+                          packageType:
+                            hidden: false
+                            prompt: What is the package type name found on page ONE to the left of label named "Package Type:"
+                            source: document
+                            required: false
+                            confidenceThreshold: 50
+                          totalCharge:
+                            hidden: false
+                            prompt: What is the Total Charge
+                            source: document
+                            required: false
+                            confidenceThreshold: 70
+                          departureDate:
+                            hidden: false
+                            prompt: What is the departure date found on page ONE to the left of label named "Departure Date:"
+                            source: document
+                            required: false
+                            confidenceThreshold: 70
+                          reservationId:
+                            hidden: false
+                            prompt: What is the reservation id found on page ONE to the left of label named "Reservation ID:"
+                            source: document
+                            required: false
+                            confidenceThreshold: 80
+                          cruiseDuration:
+                            hidden: false
+                            prompt: what is the number found on page one to right of the  label "Cruise Duration:"
+                            source: document
+                            required: false
+                            confidenceThreshold: 10
+                          guest1LastName:
+                            hidden: false
+                            prompt: "What is the guest last name found below label \"Guest #1:\" and to the right of label \"Last Name:"
+                            source: document
+                            required: false
+                            confidenceThreshold: 80
+                          cruiseItinerary:
+                            hidden: false
+                            prompt: what is the iternary description found on page 1 to the right of label "Itinerary:"
+                            source: document
+                            required: false
+                            confidenceThreshold: 70
+                          guest1FirstName:
+                            hidden: false
+                            prompt: "What is the guest first name found below to label \"Guest #1:\" and to the right of label \"First Name:\""
+                            source: document
+                            required: false
+                            confidenceThreshold: 50
+                    version: 1.0.0
+                  createdBy: 4d4fda9b-b772-4085-ac61-078af3b54543
+                  createdAt: 2024-05-29T10:24:51.682493Z
+                  updatedAt: 2024-05-30T22:11:47.781992Z
+                  registration:
+                    status: REGISTERED
+                    message: ""
+                -
+                  id: 733e0f1a-ec4c-442f-ad96-02190c6a9bef
+                  organizationId: eca25329-9592-4ff1-9054-1b08d103b991
+                  name: tinypic
+                  description: ""
+                  type: GENERIC
+                  configuration:
+                    content:
+                      output:
+                        prompts:
+                          text:
+                            hidden: false
+                            prompt: what is the text
+                            source: document
+                            required: true
+                            confidenceThreshold: 10
+                    version: 1.0.0
+                  createdBy: 4d4fda9b-b772-4085-ac61-078af3b54543
+                  createdAt: 2024-06-24T16:56:37.372612Z
+                  updatedAt: 2024-06-24T17:03:55.950227Z
+                  registration:
+                    status: REGISTERED
+                    message: ""
+          type: object
+    securedBy: []
+  uriParameters:
+    orgId?:
+      type: field-orgId
+    apiVersion?:
+      type: field-runtimeServiceApiVersion
+securedBy:
+  - mulesoft-basic-login
+types:
+  field-orgId:
+    description: |
+      MuleSoft Anypoint Organization Id
+
+      Your Anypoint Organisation Id see: [Find your Organization ID.](https://docs.mulesoft.com/access-management/organization#find-your-organization-id)
+    default: eca25329-9592-4ff1-9054-1b08d103b991
+    example: eca25329-9592-4ff1-9054-1b08d103b991
+    type: string
+    pattern: "[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?"
+  field-runtimeServiceApiVersion:
+    description: |-
+      IDP Runtime Service API Version
+
+      Current version of the MuleSoft IDP Runtime Service API Version
+    default: v1
+    enum:
+      - v1
+    example: v1
+    type: string
+    pattern: v[0-9]
