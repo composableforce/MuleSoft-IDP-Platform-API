@@ -1076,9 +1076,10 @@ protocols:
           type: object
     securedBy: []
   uriParameters:
-    orgId?:
+    orgId:
       type: field-orgId
-    apiVersion?:
+      required: true
+    apiVersion:
       type: field-runtimeServiceApiVersion
 securedBy:
   - mulesoft-basic-login
