@@ -22,6 +22,13 @@ version: v1
 protocols:
   - HTTPS
 /idp/api/{apiVersion}/organizations/{orgId}/actions:
+  uriParameters:
+    orgId:
+      type: field-orgId
+      required: true
+    apiVersion:
+      type: field-runtimeServiceApiVersion
+      required: true
   get:
     displayName: IDP - Platform - ActionsList
     responses:
@@ -1075,12 +1082,6 @@ protocols:
                     message: ""
           type: object
     securedBy: []
-  uriParameters:
-    orgId:
-      type: field-orgId
-      required: true
-    apiVersion:
-      type: field-runtimeServiceApiVersion
 securedBy:
   - mulesoft-basic-login
 types:
