@@ -21,11 +21,8 @@ mediaType:
 version: v1
 protocols:
   - HTTPS
-/idp/api/{apiVersion}/organizations/{orgId}/actions:
+/idp/api/{version}/organizations/{orgId}/actions:
   uriParameters:
-    apiVersion:
-      type: field-runtimeServiceApiVersion
-      required: true
     orgId:
       type: field-orgId
       required: true
