@@ -1,12 +1,12 @@
 #%RAML 1.0
 title: MuleSoft IDP Platform API
-baseUri: https://anypoint.mulesoft.com
+baseUri: https://anypoint.mulesoft.com/idp/api/{version}
 mediaType:
   - application/json
 version: v1
 protocols:
   - HTTPS
-/idp/api/{version}/organizations/{orgId}/actions:
+/organizations/{orgId}/actions:
   uriParameters:
     orgId:
       type: field-orgId
