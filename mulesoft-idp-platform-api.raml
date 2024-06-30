@@ -1,20 +1,4 @@
 #%RAML 1.0
-securitySchemes:
-  mulesoft-basic-login:
-    type: Basic Authentication
-    describedBy:
-      responses:
-        "200":
-          body:
-            application/json:
-              properties:
-                access_token:
-                  example: d127e2ec-a703-4e2a-8629-e9158804748ble
-                  type: string
-                token_type:
-                  example: bearer
-                  type: string
-
 title: MuleSoft IDP Platform API
 baseUri: https://anypoint.mulesoft.com
 mediaType:
@@ -1082,8 +1066,23 @@ protocols:
 securedBy:
   - mulesoft-basic-login
 
-types:
+securitySchemes:
+  mulesoft-basic-login:
+    type: Basic Authentication
+    describedBy:
+      responses:
+        "200":
+          body:
+            application/json:
+              properties:
+                access_token:
+                  example: d127e2ec-a703-4e2a-8629-e9158804748ble
+                  type: string
+                token_type:
+                  example: bearer
+                  type: string
 
+types:
   field-orgId:
     description: |
       MuleSoft Anypoint Organization Id
