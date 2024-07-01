@@ -1063,11 +1063,16 @@ protocols:
                     status: REGISTERED
                     message: ""
           type: object
-  /{orgId}
+  /{actionId}:
+    uriParameters:
+      actionId:
+        type: String
+        required: true
 
 
 
-  
+
+
 securedBy:
   - mulesoft-basic-login
 
