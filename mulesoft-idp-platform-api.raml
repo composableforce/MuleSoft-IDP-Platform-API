@@ -1066,8 +1066,13 @@ protocols:
   /{actionId}:
     uriParameters:
       actionId:
-        type: String
+        type: string
         required: true
+    get:
+      displayName: IDP - Platform - ActionsList
+      responses:
+        "200":
+          body:
 
 
 
