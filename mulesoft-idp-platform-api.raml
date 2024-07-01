@@ -1081,10 +1081,11 @@ protocols:
           "200":
             body:
               type: array
-              example:
-                strict: true
-                value:
-                  "0":
+                              type: object
+              items:
+                example:
+                  strict: true
+                  value:
                     id: 4d4fda9b-b772-4085-ac61-078af3b54543
                     name: Composable Force
                     type: USER
