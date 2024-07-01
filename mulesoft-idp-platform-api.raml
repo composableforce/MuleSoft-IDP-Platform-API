@@ -1075,11 +1075,12 @@ protocols:
           body:
             type: object
     /reviewers:
-      displayName: IDP - Platform - Get Action Detail
-      responses:
-        "200":
-          body:
-            type: object
+      get:
+        displayName: IDP - Platform - Get Action's Reviewers List
+        responses:
+          "200":
+            body:
+              type: array
 
 
 
