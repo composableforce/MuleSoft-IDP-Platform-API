@@ -31,7 +31,21 @@ protocols:
     /reviewers:
       get:
         displayName: IDP - Platform - Get Action's Reviewers List
-
+        responses:
+          "200":
+            body:
+              description: mydfdfs
+              items:
+                properties:
+                  id:
+                    example: Example
+                    type: string
+                  name:
+                    example: Example
+                    type: string
+                  "type":
+                    example: Example
+                    type: string
 
 securedBy:
   - mulesoft-basic-login
