@@ -37,7 +37,6 @@ securedBy:
         responses:
           "200":
             body:
-              description: mydfdfs
               items:
                 properties:
                   id:
@@ -78,15 +77,3 @@ types:
     example: eca25329-9592-4ff1-9054-1b08d103b991
     type: string
     pattern: "[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?"
-
-  field-runtimeServiceApiVersion:
-    description: |-
-      IDP Runtime Service API Version
-
-      Current version of the MuleSoft IDP Runtime Service API Version
-    default: v1
-    enum:
-      - v1
-    example: v1
-    type: string
-    pattern: v[0-9]
