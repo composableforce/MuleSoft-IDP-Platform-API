@@ -50,8 +50,6 @@ baseUri: https://anypoint.mulesoft.com/idp/api/{version}
                     example: george@composableforce.com
                     type: string
 
-securedBy:
-  - mulesoft-basic-login
 
 securitySchemes:
   mulesoft-basic-login:
@@ -75,7 +73,6 @@ types:
       MuleSoft Anypoint Organization Id
 
       Your Anypoint Organisation Id see: [Find your Organization ID.](https://docs.mulesoft.com/access-management/organization#find-your-organization-id)
-    default: eca25329-9592-4ff1-9054-1b08d103b991
     example: eca25329-9592-4ff1-9054-1b08d103b991
     type: string
     pattern: "[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?"
