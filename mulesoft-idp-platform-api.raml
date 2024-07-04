@@ -6,6 +6,9 @@ protocols: HTTPS
 
 baseUri: https://anypoint.mulesoft.com/idp/api/{version}
 
+securedBy:
+  - mulesoft-basic-login
+
 /organizations/{orgId}/actions:
   uriParameters:
     orgId:
@@ -49,7 +52,6 @@ baseUri: https://anypoint.mulesoft.com/idp/api/{version}
                   email:
                     example: george@composableforce.com
                     type: string
-
 
 securitySchemes:
   mulesoft-basic-login:
