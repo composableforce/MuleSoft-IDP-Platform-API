@@ -16,7 +16,20 @@ securedBy:
       required: true
   get:
     displayName: IDP - Platform - Get Actions List
-idp-rt.us-east-1.anypoint.mulesoft.com
+    queryParameters:
+      page:
+        type: number
+        description: Zero Based
+        default: 0
+      size:
+        type: number
+        default: 20
+      sort:
+        type: string
+        enum:
+          - updatedAt,desc
+          - updatedAt,desc
+        default
     responses:
       "200":
         body:
