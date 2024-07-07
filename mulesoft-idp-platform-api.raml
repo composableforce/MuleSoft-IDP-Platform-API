@@ -28,9 +28,11 @@ securedBy:
         type: string
         enum:
           - updatedAt,desc
-          - updatedAt,desc
+          - updatedAt,asc
+          - name,desc
           - name,asc
-          - name,asc
+          - type,desc
+          - type,asc
         default: updatedAt,desc
     responses:
       "200":
