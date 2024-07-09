@@ -2,7 +2,7 @@
 title: MuleSoft IDP Platform API
 mediaType: application/json
 version: v1
-protocols: HTTPS
+protocols: [HTTPS]
 
 baseUri: https://{anypointPlatformUri}/idp/api/{version}
 baseUriParameters:
@@ -14,9 +14,9 @@ baseUriParameters:
 securedBy:
   - mulesoft-basic-login
 
-/organizations/{orgId}/actions:
+/organizations/{organizationId}/actions:
   uriParameters:
-    orgId:
+    organizationId:
       type: field-orgId
       required: true
   get:
