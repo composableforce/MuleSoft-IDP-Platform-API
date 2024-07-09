@@ -160,11 +160,35 @@ types:
     example: eca25329-9592-4ff1-9054-1b08d103b991
     type: string
     pattern: "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}"
-  field-actionId:
-    description: |
-      MuleSoft Anypoint Organization Id
 
-      Your Anypoint Organisation Id see: [Find your Organization ID.](https://docs.mulesoft.com/access-management/organization#find-your-organization-id)
-    example: eca25329-9592-4ff1-9054-1b08d103b991
+
+  field-actionId:
+    displayName: IDP Document Action Id
+    description: Published Document Action UUID
+    example: 90c3e286-72b5-42ca-92d0-22f86ea8d766
     type: string
-    pattern: "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}"
+    pattern: ^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$
+
+  field-actionVersion:
+    displayName: IDP Document Action Id Version
+    description: Document Action Version like 1.0.0
+    example: 1.1.0
+    type: string
+    pattern: ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9A-Za-z-][0-9A-Za-z-]*)(?:\.(?:0|[1-9A-Za-z-][0-9A-Za-z-]*))*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$
+
+  field-executionId:
+    displayName: IDP Execution Id
+    description: IDP Execution Id returned after successful submission
+    default: 022c61de-9bfc-4a94-8a9c-43c5f8ac153e
+    example: 022c61de-9bfc-4a94-8a9c-43c5f8ac153e
+    type: string
+    pattern: ^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$
+
+
+
+
+
+
+
+
+
