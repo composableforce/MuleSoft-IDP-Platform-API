@@ -10,10 +10,12 @@ properties:
           type: string
           example: 733e0f1a-ec4c-442f-ad96-02190c6a9bef
           required: false
+          pattern: "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}"
         organizationId:
           type: string
           example: eca25329-9592-4ff1-9054-1b08d103b991
           required: false
+          pattern: "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}"
         name:
           type: string
           example: tinypic
@@ -1714,6 +1716,7 @@ properties:
         createdBy:
           type: string
           example: 4d4fda9b-b772-4085-ac61-078af3b54543
+          pattern: "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}"
           required: false
         createdAt:
           type: datetime
