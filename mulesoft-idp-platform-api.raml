@@ -123,8 +123,8 @@ securitySchemes:
   mulesoft-oauth_2_0:
     type: OAuth 2.0
     settings:
-      authorizationUri: 'https://anypoint.mulesoft.com/accounts/api/v2/oauth2/authorize'
-      accessTokenUri: 'https://anypoint.mulesoft.com/accounts/api/v2/oauth2/token'
+      authorizationUri: 'https://{anypointPlatformUri}/accounts/api/v2/oauth2/authorize'
+      accessTokenUri: 'https://{anypointPlatformUri}/accounts/api/v2/oauth2/token'
       authorizationGrants:
         - implicit
     describedBy:
