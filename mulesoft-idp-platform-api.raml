@@ -23,11 +23,13 @@ traits:
           The client reached the maximum number of requests per minute per IP.
           The client should retry the request later.
 
-/organizations/{organizationId}/actions:
-  uriParameters:
-    organizationId:
-      type: field-orgId
-      required: true
+/organizations:
+  /{organizationId}:
+    uriParameters:
+      organizationId:
+        type: field-orgId
+        required: true
+    
   get:
     displayName: IDP - Platform - Get Actions List
     queryParameters:
