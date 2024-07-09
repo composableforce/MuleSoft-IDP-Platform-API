@@ -7,7 +7,7 @@
       "provided": false
     }
   ],
-  "version": "1.0.8",
+  "version": "1.0.9",
   "originalFormatVersion": "1.0",
   "apiVersion": "v1",
   "descriptorVersion": "1.0.0",
@@ -16,5 +16,6 @@
   "assetId": "mulesoft-idp-platform-api",
   "groupId": "eca25329-9592-4ff1-9054-1b08d103b991",
   "organizationId": "eca25329-9592-4ff1-9054-1b08d103b991",
-  "name": "MuleSoft IDP Platform API"
+  "name": "MuleSoft IDP Platform API",
+  "tags": []
 }
