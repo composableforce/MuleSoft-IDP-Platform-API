@@ -11,6 +11,9 @@ baseUriParameters:
      default: "anypoint.mulesoft.com"
      enum: ["anypoint.mulesoft.com", "eu1.anypoint.mulesoft.com"]
 
+uses:
+  rest-connect: exchange_modules/org.mule.connectivity/rest-connect-library/1.0.2/rest-connect-library.raml
+
 securedBy:
   - mulesoft-oauth_2_0
 
