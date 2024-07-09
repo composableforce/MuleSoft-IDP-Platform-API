@@ -4,8 +4,13 @@ mediaType: application/json
 version: v1
 protocols: HTTPS
 
-
-baseUri: https://anypoint.mulesoft.com/idp/api/{version}
+baseUri: https://{anypointPlatformUri}/audit/{version}/
+version: v2/idp/api/{version}
+baseUriParameters:
+  anypointPlatformUri:
+     description: MuleSoft Anypoint Platform Url
+     default: "anypoint.mulesoft.com"
+     enum: ["anypoint.mulesoft.com", "eu1.anypoint.mulesoft.com"]
 
 securedBy:
   - mulesoft-basic-login
