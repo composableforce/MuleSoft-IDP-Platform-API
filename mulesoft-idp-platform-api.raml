@@ -28,7 +28,6 @@ traits:
           The client should retry the request later.
 
 /organizations:
-  (userSelectedSecuritySchemes): api
   /{orgId}:
     uriParameters:
       orgId:
@@ -36,6 +35,7 @@ traits:
         required: true
     /actions:
       get:
+        (userSelectedSecuritySchemes): 
         displayName: IDP - Platform - Get Actions List
         queryParameters:
           page:
