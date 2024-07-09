@@ -123,11 +123,16 @@ securitySchemes:
 
   mulesoft-oauth_2_0:
     type: OAuth 2.0
+    description: |
+      OAuth2 is a protocol that lets external apps request authorization to private
+      details in a user's account without getting their password. This is
+      preferred over Basic Authentication because tokens can be limited to specific
+      types of data, and can be revoked by users at any time.
+      Use apiportal for the client_id
     settings:
       authorizationUri: 'https://{anypointPlatformUri}/accounts/api/v2/oauth2/authorize'
       accessTokenUri: 'https://{anypointPlatformUri}/accounts/api/v2/oauth2/token'
-      authorizationGrants:
-        - implicit
+      authorizationGrants: [ authorization_code, implicit, client_credentials, password ]
     describedBy:
       responses:
         '401':
