@@ -95,6 +95,12 @@ securitySchemes:
   mulesoft-basic-login:
     type: Basic Authentication
     describedBy:
+      headers:
+        Authorization:
+          description: |
+            Used to send username and password. Do not use
+            with the "access_token" query string parameter.
+          type: string
       responses:
         "200":
           body:
