@@ -175,6 +175,10 @@ securitySchemes:
           type: string
 
 types:
+  field-uuid:
+    type: string
+    pattern: "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}"
+
   field-orgId:
     description: |
       MuleSoft Anypoint Organization Id
@@ -205,6 +209,7 @@ types:
     example: 022c61de-9bfc-4a94-8a9c-43c5f8ac153e
     type: string
     pattern: "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}"
+  
 
 
   object-fsfsfsd:
