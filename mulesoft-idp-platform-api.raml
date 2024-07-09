@@ -29,69 +29,69 @@ traits:
       organizationId:
         type: field-orgId
         required: true
-    
-  get:
-    displayName: IDP - Platform - Get Actions List
-    queryParameters:
-      page:
-        type: number
-        description: Zero Based
-        default: 0
-      size:
-        type: number
-        default: 20
-      sort:
-        type: string
-        enum:
-          - updatedAt,desc
-          - updatedAt,asc
-          - name,desc
-          - name,asc
-          - type,desc
-          - type,asc
-        default: updatedAt,desc
-    responses:
-      "200":
-        body:
-          type: object
-  /{actionId}:
-    uriParameters:
-      actionId:
-        type: string
-        required: true
-    get:
-      displayName: IDP - Platform - Get Action Detail
-      responses:
-        "200":
-          body:
-            type: object
-    /reviewers:
+    /actions:
       get:
-        displayName: IDP - Platform - Get Action's Reviewers List
+        displayName: IDP - Platform - Get Actions List
+        queryParameters:
+          page:
+            type: number
+            description: Zero Based
+            default: 0
+          size:
+            type: number
+            default: 20
+          sort:
+            type: string
+            enum:
+              - updatedAt,desc
+              - updatedAt,asc
+              - name,desc
+              - name,asc
+              - type,desc
+              - type,asc
+            default: updatedAt,desc
         responses:
           "200":
             body:
-              items:
-                properties:
-                  id:
-                    example: 4d4fda9b-b772-4085-ac61-078af3b54543
-                    type: string
-                  name:
-                    example: Composable Force
-                    type: string
-                  "type":
-                    example: USER
-                    type: string
-                  email:
-                    example: george@composableforce.com
-                    type: string
-    /versions:
+              type: object
+    /{actionId}:
+      uriParameters:
+        actionId:
+          type: string
+          required: true
       get:
-        displayName: IDP - Platform - Get Action's Versions List
+        displayName: IDP - Platform - Get Action Detail
         responses:
           "200":
             body:
-              items:
+              type: object
+      /reviewers:
+        get:
+          displayName: IDP - Platform - Get Action's Reviewers List
+          responses:
+            "200":
+              body:
+                items:
+                  properties:
+                    id:
+                      example: 4d4fda9b-b772-4085-ac61-078af3b54543
+                      type: string
+                    name:
+                      example: Composable Force
+                      type: string
+                    "type":
+                      example: USER
+                      type: string
+                    email:
+                      example: george@composableforce.com
+                      type: string
+      /versions:
+        get:
+          displayName: IDP - Platform - Get Action's Versions List
+          responses:
+            "200":
+              body:
+                items:
 
 
 
