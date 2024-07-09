@@ -14,7 +14,13 @@ baseUriParameters:
 securedBy:
   - mulesoft-basic-login
 
-
+traits:
+  rateLimited:
+    responses:
+      429:
+        description: |
+          The client reached the maximum number of requests per minute per IP.
+          The client should retry the request later.
 
 /organizations/{organizationId}/actions:
   uriParameters:
