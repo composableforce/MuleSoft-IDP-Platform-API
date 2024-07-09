@@ -17,6 +17,8 @@ uses:
 securedBy:
   - mulesoft-oauth_2_0
 
+(userSelectedSecuritySchemes)
+
 traits:
   rateLimited:
     responses:
@@ -33,7 +35,6 @@ traits:
         required: true
     /actions:
       get:
-        (userSelectedSecuritySchemes): mulesoft-oauth_2_0
         displayName: IDP - Platform - Get Actions List
         queryParameters:
           page:
