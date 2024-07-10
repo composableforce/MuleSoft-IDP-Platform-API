@@ -95,6 +95,20 @@ traits:
         /versions:
           get:
             displayName: IDP - Platform - Get Action's Versions List
+            queryParameters:
+              page:
+                type: number
+                description: Zero Based
+                default: 0
+              size:
+                type: number
+                default: 20
+              sort:
+                type: string
+                enum:
+                  - version,desc
+                  - version,asc
+                default: version,desc
             responses:
               "200":
                 body:
