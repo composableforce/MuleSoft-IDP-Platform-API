@@ -194,7 +194,13 @@ types:
               prompts:
                 type: Prompts
       version:
-        type: 
+        type: field-actionVersion
+
+  Prompts:
+    type: object
+    properties:
+      /^[a-zA-Z0-9_.-]*$/:
+        type: Prompt
   Prompt:
     type: object
     properties:
@@ -208,11 +214,6 @@ types:
         type: boolean
       confidenceThreshold:
         type: integer
-  Prompts:
-    type: object
-    properties:
-      /^[a-zA-Z0-9_.-]*$/:
-        type: Prompt
 
   object-actionOperation:
     type: object
