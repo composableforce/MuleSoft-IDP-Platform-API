@@ -134,30 +134,30 @@ types:
         type: string
         example: CD656092-BurlingtonTextiles Purchase Order
          required: false
-            type:
-              type: string
-              enum:
-                - GENERIC
-                - INVOICE
-                - PURCHASE_ORDER
-              example: GENERIC
-              required: true
-            configuration:
-              type: object
-              properties:
-                content:
-                  type: object
-                  properties:
-                    output:
-                      type: object
-                      properties:
-                        fields:
-                          type: object
-                        tables:
-                          type: object
-                        prompts:
-                          type: object
-                version:
+       type:
+        type: string
+         enum:
+           - GENERIC
+           - INVOICE
+           - PURCHASE_ORDER
+         example: GENERIC
+        required: true
+      configuration:
+        type: object
+        properties:
+           content:
+             type: object
+             properties:
+               output:
+                 type: object
+                properties:
+                   fields:
+                     type: object
+                   tables:
+                     type: object
+                   prompts:
+                    type: object
+            version:
                   type: field-actionVersion
                   required: true
             createdBy:
