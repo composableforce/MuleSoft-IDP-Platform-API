@@ -15,7 +15,7 @@ uses:
   rest-connect: exchange_modules/org.mule.connectivity/rest-connect-library/1.0.2/rest-connect-library.raml
 
 securedBy: [mulesoft-oauth_2_0, mulesoft-basic-login]
-(rest-connect.userSelectedSecuritySchemes): User will select wich security scheme to use for this api.
+(rest-connect.userSelectedSecuritySchemes): User will select basic until oauth supported
 
 traits:
   rateLimited:
@@ -24,6 +24,7 @@ traits:
         description: |
           The client reached the maximum number of requests per minute per IP.
           The client should retry the request later.
+
 
 /organizations:
   /{orgId}:
@@ -55,7 +56,8 @@ traits:
         responses:
           "200":
             body:
-              type: object
+              type: object-actionsList
+
       /{actionId}:
         uriParameters:
           actionId:
@@ -63,10 +65,12 @@ traits:
             required: true
         get:
           displayName: IDP - Platform - Get Action Detail
+          description: Get high level detail and hardcoded to version 1.0.0 detail
           responses:
             "200":
               body:
-                type: object
+                type: object-action
+
         /reviewers:
           get:
             displayName: IDP - Platform - Get Action's Reviewers List
@@ -77,7 +81,7 @@ traits:
                     properties:
                       id:
                         example: 4d4fda9b-b772-4085-ac61-078af3b54543
-                        type: string
+                        type: field-uuid
                       name:
                         example: Composable Force
                         type: string
@@ -87,14 +91,210 @@ traits:
                       email:
                         example: george@composableforce.com
                         type: string
+
         /versions:
           get:
             displayName: IDP - Platform - Get Action's Versions List
+            queryParameters:
+              page:
+                type: number
+                description: Zero Based
+                default: 0
+              size:
+                type: number
+                default: 20
+              sort:
+                type: string
+                enum:
+                  - version,desc
+                  - version,asc
+                default: version,desc
             responses:
               "200":
                 body:
-                  items:
+                  type: [object-actionVersion]
 
+
+types:
+  
+  object-action:
+    type: object
+    properties:
+      id:
+        type: field-actionId
+        required: true
+      organizationId:
+        type: field-orgId
+        required: true
+      name:
+        type: string
+        example: IDP-PO-CD656092-BurlingtonTextiles
+        required: true
+      description:
+        type: string
+        example: CD656092-BurlingtonTextiles Purchase Order
+        required: false
+      "type":
+        type: string
+        enum:
+          - GENERIC
+          - INVOICE
+          - PURCHASE_ORDER
+        example: GENERIC
+        required: true
+      configuration:
+        type: object-actionConfiguration
+      createdBy:
+        type: field-uuid
+        example: 4d4fda9b-b772-4085-ac61-078af3b54543
+        required: true
+      createdAt:
+        type: datetime
+        example: '2024-06-24T16:56:37.372612Z'
+        format: rfc3339
+        required: true
+      updatedAt:
+        type: datetime
+        example: '2024-06-24T17:03:55.950227Z'
+        format: rfc3339
+        required: false
+      registration:
+        type: object
+        properties:
+          status:
+            type: string
+            enum:
+              - REGISTERED
+            example: REGISTERED
+            required: false
+          message:
+            type: string
+            example: ''
+            required: false
+
+  object-actionConfiguration:
+    type: object
+    properties:
+      content:
+        type: object
+        properties:
+          output:
+            type: object
+            properties:
+              fields:
+                type: object
+              tables:
+                type: object
+              prompts:
+                type: object
+
+  object-actionOperation:
+    type: object
+    properties:
+      id:
+        type: field-uuid
+      "type":
+        type: string
+        enum:
+          - EXCHANGE_PUBLICATION
+          - RUNTIME_PUBLICATION
+        example: EXCHANGE_PUBLICATION
+      status:
+        type: string
+        example: SUCCESS
+      result:
+        type: string
+      info:
+        type: object
+        properties:
+          baseUrl:
+            type: string
+            example: "https://idp-rt.us-east-1.anypoint.mulesoft.com"
+            required: false
+      createdAt:
+        type: datetime
+        example: '2024-06-24T16:56:37.372612Z'
+        format: rfc3339
+        required: true
+      updatedAt:
+        type: datetime
+        example: '2024-06-24T17:03:55.950227Z'
+        format: rfc3339
+        required: false
+
+  object-actionsList:
+    type: object
+    properties:
+      actions:
+        type: [object-action]
+      total:
+        description: Total Org's Actions (not zero based)
+        type: integer
+        example: 6
+        required: true
+
+  object-actionVersion:
+    type: object
+    properties:
+      organizationId:
+        type: field-orgId
+        required: true
+      actionId:
+        type: field-actionId
+        required: true
+      version:
+        type: field-actionVersion
+        required: true
+      status:
+        type: string
+        example: SUCCESS
+        required: false
+      configuration:
+        type: object-actionConfiguration
+      operations:
+        type: [object-actionOperation]
+      createdAt:
+        type: datetime
+        example: '2024-06-24T16:56:37.372612Z'
+        format: rfc3339
+        required: true
+      updatedAt:
+        type: datetime
+        example: '2024-06-24T17:03:55.950227Z'
+        format: rfc3339
+        required: false
+
+  field-uuid:
+    type: string
+    pattern: "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}"
+
+  field-orgId:
+    description: |
+      MuleSoft Anypoint Organization Id
+
+      Your Anypoint Organisation Id see: [Find your Organization ID.](https://docs.mulesoft.com/access-management/organization#find-your-organization-id)
+    example: eca25329-9592-4ff1-9054-1b08d103b991
+    type: field-uuid
+
+  field-actionId:
+    displayName: IDP Document Action Id
+    description: Published Document Action UUID
+    example: 90c3e286-72b5-42ca-92d0-22f86ea8d766
+    type: field-uuid
+
+  field-actionVersion:
+    displayName: IDP Document Action Id Version
+    description: Document Action Version like 1.0.0
+    example: 1.1.0
+    type: string
+    pattern: ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9A-Za-z-][0-9A-Za-z-]*)(?:\.(?:0|[1-9A-Za-z-][0-9A-Za-z-]*))*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$
+
+  field-executionId:
+    displayName: IDP Execution Id
+    description: IDP Execution Id returned after successful submission
+    type: field-uuid
+    default: 022c61de-9bfc-4a94-8a9c-43c5f8ac153e
+    example: 022c61de-9bfc-4a94-8a9c-43c5f8ac153e
 
 
 securitySchemes:
@@ -155,44 +355,3 @@ securitySchemes:
             Used to send a valid OAuth 2 access token. Do not use together with
             the "Authorization" header
           type: string
-
-types:
-  field-orgId:
-    description: |
-      MuleSoft Anypoint Organization Id
-
-      Your Anypoint Organisation Id see: [Find your Organization ID.](https://docs.mulesoft.com/access-management/organization#find-your-organization-id)
-    example: eca25329-9592-4ff1-9054-1b08d103b991
-    type: string
-    pattern: "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}"
-
-  field-actionId:
-    displayName: IDP Document Action Id
-    description: Published Document Action UUID
-    example: 90c3e286-72b5-42ca-92d0-22f86ea8d766
-    type: string
-    pattern: "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}"
-
-  field-actionVersion:
-    displayName: IDP Document Action Id Version
-    description: Document Action Version like 1.0.0
-    example: 1.1.0
-    type: string
-    pattern: ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9A-Za-z-][0-9A-Za-z-]*)(?:\.(?:0|[1-9A-Za-z-][0-9A-Za-z-]*))*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$
-
-  field-executionId:
-    displayName: IDP Execution Id
-    description: IDP Execution Id returned after successful submission
-    default: 022c61de-9bfc-4a94-8a9c-43c5f8ac153e
-    example: 022c61de-9bfc-4a94-8a9c-43c5f8ac153e
-    type: string
-    pattern: "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}"
-
-
-
-
-
-
-
-
-
