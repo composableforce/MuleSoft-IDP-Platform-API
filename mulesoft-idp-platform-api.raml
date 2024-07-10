@@ -188,6 +188,21 @@ types:
               prompts:
                 type: object
 
+  object-actionOperations:
+    type: object
+    properties:
+      content:
+        type: object
+        properties:
+          output:
+            type: object
+            properties:
+              fields:
+                type: object
+              tables:
+                type: object
+              prompts:
+                type: object
 
   object-actionsList:
     type: object
@@ -218,6 +233,8 @@ types:
         required: false
       configuration:
         type: object-actionConfiguration
+      operations:
+        type: object-actionOperations
       createdAt:
         type: datetime
         example: '2024-06-24T16:56:37.372612Z'
