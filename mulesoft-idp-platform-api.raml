@@ -192,7 +192,24 @@ types:
               tables:
                 type: object
               prompts:
-                type: object
+                type: P
+  Prompt:
+    type: object
+    properties:
+      hidden:
+        type: boolean
+      prompt:
+        type: string
+      source:
+        type: string
+      required:
+        type: boolean
+      confidenceThreshold:
+        type: integer
+  Prompts:
+    type: object
+    additionalProperties:
+      type: Prompt
 
   object-actionOperation:
     type: object
