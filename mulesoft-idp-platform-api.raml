@@ -40,9 +40,11 @@ traits:
             type: number
             description: Zero Based
             default: 0
+            required: false
           size:
             type: number
             default: 20
+            required: false
           sort:
             type: string
             enum:
@@ -100,15 +102,18 @@ traits:
                 type: number
                 description: Zero Based
                 default: 0
+                required: false
               size:
                 type: number
                 default: 20
+                required: false
               sort:
                 type: string
 #                enum:
 #                  - version,desc        Breaks REST Connector in Mule Project  - Reserved word maybe..
 #                  - version,asc
 #                default: version,desc
+                required: false
             responses:
               "200":
                 body:
