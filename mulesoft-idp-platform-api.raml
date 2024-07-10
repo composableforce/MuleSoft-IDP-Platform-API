@@ -265,7 +265,217 @@ types:
         example: 6
         required: true
 
-
+  Page:
+    type: object
+    properties:
+      tables?:
+        type: object
+        properties:
+          table1:
+            type: array
+            items:
+              type: object
+              properties:
+                unitPrice: Field
+                quantity: Field
+                productCode: Field
+                price: Field
+                description: Field
+            required: false
+      page?:
+        type: string
+      fields?:
+        type: object
+        properties:
+          total: Field
+          shipVia: Field
+          purchaseOrderDate: Field
+          subtotal: Field
+          purchaseOrderNumber: Field
+          parties:
+            type: object
+            properties:
+              vendor:
+                type: object
+                properties: {}
+                required: false
+              billTo:
+                type: object
+                properties: {}
+                required: false
+              buyer:
+                type: object
+                properties:
+                  country: Field
+                  zipCode: Field
+                  address: Field
+                  headerName: Field
+                  city: Field
+                  street: Field
+                  name: Field
+                  headerAddress: Field
+                  headerPhone: Field
+                  state: Field
+                  headerUrl: Field
+                  addressBlock: Field
+                required: false
+              shipTo:
+                type: object
+                properties:
+                  country: Field
+                  zipCode: Field
+                  address: Field
+                  city: Field
+                  street: Field
+                  name: Field
+                  state: Field
+                  addressBlock: Field
+                required: false
+            required: false
+          tax: Field
+          deliveryDate: Field
+          signatures:
+            type: array
+            items: Field
+            required: false
+      prompts?:
+        type: object
+        properties:
+          shippingHandlingCost: Prompt
+          customerNumber: Prompt
+  Prompt:
+    type: object
+    properties:
+      answer?: Field
+      source?:
+        type: string
+      prompt?:
+        type: string
+  Field:
+    type: object
+    properties:
+      value?:
+        type: string
+      geometry?:
+        type: object
+        properties:
+          height:
+            type: number
+            required: false
+          left:
+            type: number
+            required: false
+          width:
+            type: number
+            required: false
+          top:
+            type: number
+            required: false
+      confidenceScore?:
+        type: number
+  DocumentExecutionPostResponse:
+    type: object
+    properties:
+      id?:
+        type: string
+      documentName?:
+        type: string
+      status?:
+        type: string
+  DocumentExecutionGetResponse:
+    type: object
+    properties:
+      pages?:
+        type: array
+        items: Page
+      id?:
+        type: string
+      documentName?:
+        type: string
+      prompts?:
+        type: object
+        properties: {}
+      status?:
+        type: string
+annotationTypes:
+  amf-serverDescription:
+    type: any
+  amf-exclusiveMinimum:
+    type: any
+  amf-binding:
+    type: any
+  amf-pattern:
+    type: any
+  amf-payloads:
+    type: any
+  amf-exclusiveMaximum:
+    type: any
+  amf-consumes:
+    type: any
+  amf-additionalProperties:
+    type: any
+  amf-or:
+    type: any
+  amf-url:
+    type: any
+  amf-externalDocs:
+    type: any
+  amf-flow:
+    type: any
+  amf-oasDeprecated:
+    type: any
+  amf-contact:
+    type: any
+  amf-multipleOf:
+    type: any
+  amf-xor:
+    type: any
+  amf-not:
+    type: any
+  amf-callbacks:
+    type: any
+  amf-produces:
+    type: any
+  amf-format:
+    type: any
+  amf-license:
+    type: any
+  amf-summary:
+    type: any
+  amf-responses:
+    type: any
+  amf-maximum:
+    type: any
+  amf-tags:
+    type: any
+  amf-dependencies:
+    type: any
+  amf-readOnly:
+    type: any
+  amf-tuple:
+    type: any
+  amf-examples:
+    type: any
+  amf-collectionFormat:
+    type: any
+  amf-termsOfService:
+    type: any
+  amf-servers:
+    type: any
+  amf-xone:
+    type: any
+  amf-defaultResponse:
+    type: any
+  amf-baseUriParameters:
+    type: any
+  amf-parameters:
+    type: any
+  amf-minimum:
+    type: any
+  amf-recursive:
+    type: any
+  amf-and:
+    type: any
 
 
 
