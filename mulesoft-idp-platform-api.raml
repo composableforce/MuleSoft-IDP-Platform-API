@@ -143,7 +143,7 @@ types:
         example: GENERIC
         required: true
       configuration:
-        type: object
+        type: object-actionConfiguration
       createdBy:
         type: field-uuid
         example: 4d4fda9b-b772-4085-ac61-078af3b54543
@@ -171,6 +171,23 @@ types:
             type: string
             example: ''
             required: false
+
+  object-actionConfiguration:
+    type: object
+      properties:
+                content:
+                  type: object
+                  properties:
+                    output:
+                      type: object
+                      properties:
+                        fields:
+                          type: object
+                        tables:
+                          type: object
+                        prompts:
+                          type: object
+
 
   object-actionsList:
     type: object
