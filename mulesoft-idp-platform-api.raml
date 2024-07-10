@@ -101,66 +101,6 @@ traits:
                   type: [object-version]
 
 
-
-securitySchemes:
-  mulesoft-basic-login:
-    type: Basic Authentication
-    describedBy:
-      headers:
-        Authorization:
-          description: |
-            Used to send username and password. Do not use
-            with the "access_token" query string parameter.
-          type: string
-      responses:
-        "200":
-          body:
-            application/json:
-              properties:
-                access_token:
-                  example: d127e2ec-a703-4e2a-8629-e9158804748ble
-                  type: string
-                token_type:
-                  example: bearer
-                  type: string
-
-  mulesoft-oauth_2_0:
-    type: OAuth 2.0
-    description: |
-      OAuth2 is a protocol that lets external apps request authorization to private
-      details in a user's account without getting their password. This is
-      preferred over Basic Authentication because tokens can be limited to specific
-      types of data, and can be revoked by users at any time.
-      Use apiportal for the client_id
-    settings:
-      authorizationUri: 'https://{anypointPlatformUri}/accounts/api/v2/oauth2/authorize'
-      accessTokenUri: 'https://{anypointPlatformUri}/accounts/api/v2/oauth2/token'
-      authorizationGrants: [ authorization_code, implicit, client_credentials, password ]
-#      authorizationGrants: [ authorization_code, implicit, client_credentials, password ]
-    describedBy:
-      responses:
-        '401':
-          description: |
-            Bad or expired token. This can happen if the user or CloudHub
-            revoked or expired an access token. To fix, you should re-
-            authenticate the user.
-        '403':
-          description: |
-            Bad OAuth request (wrong consumer key, bad nonce, expired
-            timestamp...). Unfortunately, re-authenticating the user won't help here.
-      headers:
-        Authorization:
-          description: |
-            Used to send a valid OAuth 2 access token. Do not use
-            with the "access_token" query string parameter.
-          type: string
-      queryParameters:
-        access_token:
-          description: |
-            Used to send a valid OAuth 2 access token. Do not use together with
-            the "Authorization" header
-          type: string
-
 types:
   field-uuid:
     type: string
@@ -213,6 +153,7 @@ types:
         example: 6
         required: true
 
+  object-acti
 
 
 
@@ -355,6 +296,63 @@ types:
         type: string
 
   
+securitySchemes:
+  mulesoft-basic-login:
+    type: Basic Authentication
+    describedBy:
+      headers:
+        Authorization:
+          description: |
+            Used to send username and password. Do not use
+            with the "access_token" query string parameter.
+          type: string
+      responses:
+        "200":
+          body:
+            application/json:
+              properties:
+                access_token:
+                  example: d127e2ec-a703-4e2a-8629-e9158804748ble
+                  type: string
+                token_type:
+                  example: bearer
+                  type: string
 
+  mulesoft-oauth_2_0:
+    type: OAuth 2.0
+    description: |
+      OAuth2 is a protocol that lets external apps request authorization to private
+      details in a user's account without getting their password. This is
+      preferred over Basic Authentication because tokens can be limited to specific
+      types of data, and can be revoked by users at any time.
+      Use apiportal for the client_id
+    settings:
+      authorizationUri: 'https://{anypointPlatformUri}/accounts/api/v2/oauth2/authorize'
+      accessTokenUri: 'https://{anypointPlatformUri}/accounts/api/v2/oauth2/token'
+      authorizationGrants: [ authorization_code, implicit, client_credentials, password ]
+#      authorizationGrants: [ authorization_code, implicit, client_credentials, password ]
+    describedBy:
+      responses:
+        '401':
+          description: |
+            Bad or expired token. This can happen if the user or CloudHub
+            revoked or expired an access token. To fix, you should re-
+            authenticate the user.
+        '403':
+          description: |
+            Bad OAuth request (wrong consumer key, bad nonce, expired
+            timestamp...). Unfortunately, re-authenticating the user won't help here.
+      headers:
+        Authorization:
+          description: |
+            Used to send a valid OAuth 2 access token. Do not use
+            with the "access_token" query string parameter.
+          type: string
+      queryParameters:
+        access_token:
+          description: |
+            Used to send a valid OAuth 2 access token. Do not use together with
+            the "Authorization" header
+          type: string
 
 
