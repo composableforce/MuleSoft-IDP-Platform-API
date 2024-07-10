@@ -157,25 +157,25 @@ types:
                      type: object
                    prompts:
                     type: object
-            version:
-                  type: field-actionVersion
-                  required: true
-            createdBy:
-              type: field-uuid
-              example: 4d4fda9b-b772-4085-ac61-078af3b54543
-              required: true
-            createdAt:
-              type: datetime
-              example: '2024-06-24T16:56:37.372612Z'
-              format: rfc3339
-              required: true
-            updatedAt:
-              type: datetime
-              example: '2024-06-24T17:03:55.950227Z'
-              format: rfc3339
-              required: false
-            registration:
-              type: object
+          version:
+            type: field-actionVersion
+            required: true
+       createdBy:
+        type: field-uuid
+        example: 4d4fda9b-b772-4085-ac61-078af3b54543
+         required: true
+       createdAt:
+        type: datetime
+        example: '2024-06-24T16:56:37.372612Z'
+        format: rfc3339
+        required: true
+       updatedAt:
+        type: datetime
+        example: '2024-06-24T17:03:55.950227Z'
+         format: rfc3339
+        required: false
+       registration:
+            type: object
               properties:
                 status:
                   type: string
