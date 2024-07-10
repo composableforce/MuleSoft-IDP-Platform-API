@@ -133,7 +133,7 @@ types:
       description:
         type: string
         example: CD656092-BurlingtonTextiles Purchase Order
-         required: false
+        required: false
        type:
         type: string
          enum:
@@ -141,7 +141,7 @@ types:
            - INVOICE
            - PURCHASE_ORDER
          example: GENERIC
-        required: true
+         required: true
       configuration:
         type: object
         properties:
@@ -175,18 +175,18 @@ types:
          format: rfc3339
         required: false
        registration:
-            type: object
-              properties:
-                status:
-                  type: string
-                  enum:
-                    - REGISTERED
-                  example: REGISTERED
-                  required: false
-                message:
-                  type: string
-                  example: ''
-                  required: false
+        type: object
+        properties:
+          status:
+            type: string
+            enum:
+              - REGISTERED
+            example: REGISTERED
+            required: false
+          message:
+            type: string
+            example: ''
+            required: false
 
   object-actionsList:
     type: object
