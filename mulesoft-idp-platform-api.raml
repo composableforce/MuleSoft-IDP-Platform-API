@@ -247,11 +247,9 @@ types:
                           type: object
                         prompts:
                           type: object
-  
-
                 version:
                   type: field-actionVersion
-                  reququired
+                  required: true
             createdBy:
               type: field-uuid
               example: 4d4fda9b-b772-4085-ac61-078af3b54543
@@ -410,7 +408,7 @@ types:
         type: string
       status?:
         type: string
-  DocumentExecutionGetResponse:
+  DocumentExecutionPostResponse:
     type: object
     properties:
       pages?:
