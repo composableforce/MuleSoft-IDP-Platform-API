@@ -193,8 +193,11 @@ types:
     properties:
       id:
         type: field-uuid
-      tables:
-        type: object
+      "type":
+        type: string
+        enum:
+          - EXCHANGE_PUBLICATION
+          - 
       prompts:
         type: object
 
