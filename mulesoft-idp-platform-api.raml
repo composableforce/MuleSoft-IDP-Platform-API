@@ -191,18 +191,12 @@ types:
   object-actionOperation:
     type: object
     properties:
-      content:
+      id:
+        type: field-uuid
+      tables:
         type: object
-        properties:
-          output:
-            type: object
-            properties:
-              fields:
-                type: object
-              tables:
-                type: object
-              prompts:
-                type: object
+      prompts:
+        type: object
 
   object-actionsList:
     type: object
