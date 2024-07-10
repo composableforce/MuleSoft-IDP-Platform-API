@@ -119,21 +119,21 @@ types:
   
   object-action:
     type: object
-          properties:
-            id:
-              type: field-actionId
-              required: true
-            organizationId:
-              type: field-orgId
-              required: true
-            name:
-              type: string
-              example: IDP-PO-CD656092-BurlingtonTextiles
-              required: true
-            description:
-              type: string
-              example: CD656092-BurlingtonTextiles Purchase Order
-              required: false
+    properties:
+      id:
+        type: field-actionId
+        required: true
+      organizationId:
+        type: field-orgId
+        required: true
+      name:
+         type: string
+         example: IDP-PO-CD656092-BurlingtonTextiles
+         required: true
+      description:
+        type: string
+        example: CD656092-BurlingtonTextiles Purchase Order
+         required: false
             type:
               type: string
               enum:
