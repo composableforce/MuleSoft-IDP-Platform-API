@@ -194,14 +194,17 @@ types:
     example: 022c61de-9bfc-4a94-8a9c-43c5f8ac153e
   
   object-action:
-
+    type: object
+    properties:
+      mydield:
+        type: string
   object-actionsList:
     type: object
     properties:
       actions:
         type: array
         items:
-          type: object
+          type: object-action
       total:
         description: Total Org's Actions (not zero based)
         type: integer
