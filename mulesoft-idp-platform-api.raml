@@ -208,7 +208,9 @@ types:
         type: integer
   Prompts:
     type: object
-
+    properties:
+      /^[a-zA-Z0-9_.-]*$/:
+        type: Prompt
 
   object-actionOperation:
     type: object
