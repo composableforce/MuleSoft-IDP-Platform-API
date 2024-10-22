@@ -1,0 +1,391 @@
+#%RAML 1.0
+title: MuleSoft IDP Platform API
+version: v1
+mediaType: application/json
+protocols: [HTTPS]
+
+baseUri: https://{anypointPlatformHost}/idp/api/{version}
+baseUriParameters:
+  anypointPlatformHost:
+     description: MuleSoft Anypoint Platform Host Name
+     default: "anypoint.mulesoft.com"
+     enum: ["anypoint.mulesoft.com", "eu1.anypoint.mulesoft.com"]
+
+# See https://www.mulesoft.com/exchange/org.mule.connectivity/rest-connect-library/
+#uses:
+#  rest-connect: exchange_modules/org.mule.connectivity/rest-connect-library/1.0.2/rest-connect-library.raml
+
+#securedBy: [mulesoft-oauth_2_0, mulesoft-basic-login]
+#(rest-connect.userSelectedSecuritySchemes): User will select basic until oauth supported
+
+securedBy: [mulesoft-basic-login]
+
+traits:
+  rateLimited:
+    responses:
+      429:
+        description: |
+          The client reached the maximum number of requests per minute per IP.
+          The client should retry the request later.
+
+
+/organizations:
+  /{orgId}:
+    uriParameters:
+      orgId:
+        type: field-orgId
+        required: true
+    /actions:
+      get:
+        displayName: IDP - Platform - Get Actions List
+        queryParameters:
+          page:
+            type: number
+            description: Zero Based
+            default: 0
+            required: false
+          size:
+            type: number
+            default: 20
+            required: false
+          sort:
+            type: string
+            enum:
+              - updatedAt,desc
+              - updatedAt,asc
+              - name,desc
+              - name,asc
+              - type,desc
+              - type,asc
+            default: updatedAt,desc
+            required: false
+        responses:
+          "200":
+            body:
+              type: object-actionsList
+
+      /{actionId}:
+        uriParameters:
+          actionId:
+            type: field-actionId
+            required: true
+        get:
+          displayName: IDP - Platform - Get Action Detail
+          description: Get high level detail and hardcoded to version 1.0.0 detail
+          responses:
+            "200":
+              body:
+                type: object-action
+
+        /reviewers:
+          get:
+            displayName: IDP - Platform - Get Action's Reviewers List
+            responses:
+              "200":
+                body:
+                  items:
+                    properties:
+                      id:
+                        example: 4d4fda9b-b772-4085-ac61-078af3b54543
+                        type: field-uuid
+                      name:
+                        example: Composable Force
+                        type: string
+                      "type":
+                        example: USER
+                        type: string
+                      email:
+                        example: george@composableforce.com
+                        type: string
+
+        /versions:
+          get:
+            displayName: IDP - Platform - Get Action's Versions List
+            queryParameters:
+              page:
+                type: number
+                description: Zero Based
+                default: 0
+                required: false
+              size:
+                type: number
+                default: 20
+                required: false
+              sort:
+                type: string
+#                enum:
+#                  - version,desc        Breaks REST Connector in Mule Project  - Reserved word maybe..
+#                  - version,asc
+#                default: version,desc
+                required: false
+            responses:
+              "200":
+                body:
+                  type: object-actionVersion []
+
+
+types:
+  
+  object-action:
+    type: object
+    properties:
+      id:
+        type: field-actionId
+        required: true
+      organizationId:
+        type: field-orgId
+        required: true
+      name:
+        type: string
+        example: IDP-PO-CD656092-BurlingtonTextiles
+        required: true
+      description:
+        type: string
+        example: CD656092-BurlingtonTextiles Purchase Order
+        required: false
+      "type":
+        type: string
+        enum:
+          - GENERIC
+          - INVOICE
+          - PURCHASE_ORDER
+        example: GENERIC
+        required: true
+      configuration:
+        type: object-actionConfiguration
+      createdBy:
+        type: field-uuid
+        example: 4d4fda9b-b772-4085-ac61-078af3b54543
+        required: true
+      createdAt:
+        type: datetime
+        example: '2024-06-24T16:56:37.372612Z'
+        format: rfc3339
+        required: true
+      updatedAt:
+        type: datetime
+        example: '2024-06-24T17:03:55.950227Z'
+        format: rfc3339
+        required: false
+      registration:
+        type: object
+        properties:
+          status:
+            type: string
+            enum:
+              - REGISTERED
+            example: REGISTERED
+            required: false
+          message:
+            type: string
+            example: ''
+            required: false
+
+  object-actionConfiguration:
+    type: object
+    properties:
+      content:
+        type: object
+        properties:
+          output:
+            type: object
+            properties:
+              fields:
+                type: object
+              tables:
+                type: object
+              prompts::
+                type: Prompts
+      version:
+        type: field-actionVersion
+
+  Prompts:
+    type: object
+    properties:
+      /^[a-zA-Z0-9_.-]*$/:
+        type: Prompt
+  Prompt:
+    type: object
+    properties:
+      hidden:
+        type: boolean
+        example: false
+      prompt:
+        type: string
+        example: what is the text
+      source:
+        type: string
+        example: document
+      required:
+        type: boolean
+        example: true
+      confidenceThreshold:
+        type: integer
+        example: 10
+
+  object-actionOperation:
+    type: object
+    properties:
+      id:
+        type: field-uuid
+      "type":
+        type: string
+        enum:
+          - EXCHANGE_PUBLICATION
+          - RUNTIME_PUBLICATION
+        example: EXCHANGE_PUBLICATION
+      status:
+        type: string
+        example: SUCCESS
+      result:
+        type: string
+      info:
+        type: object
+        properties:
+          baseUrl:
+            type: string
+            example: "https://idp-rt.us-east-1.anypoint.mulesoft.com"
+            required: false
+      createdAt:
+        type: datetime
+        example: '2024-06-24T16:56:37.372612Z'
+        format: rfc3339
+        required: true
+      updatedAt:
+        type: datetime
+        example: '2024-06-24T17:03:55.950227Z'
+        format: rfc3339
+        required: false
+
+  object-actionsList:
+    type: object
+    properties:
+      actions:
+        type: object-action []
+      total:
+        description: Total Org's Actions (not zero based)
+        type: integer
+        example: 6
+        required: true
+
+  object-actionVersion:
+    type: object
+    properties:
+      organizationId:
+        type: field-orgId
+        required: true
+      actionId:
+        type: field-actionId
+        required: true
+      version:
+        type: field-actionVersion
+        required: true
+      status:
+        type: string
+        example: SUCCESS
+        required: false
+      configuration:
+        type: object-actionConfiguration
+      operations:
+        type: object-actionOperation []
+      createdAt:
+        type: datetime
+        example: '2024-06-24T16:56:37.372612Z'
+        format: rfc3339
+        required: true
+      updatedAt:
+        type: datetime
+        example: '2024-06-24T17:03:55.950227Z'
+        format: rfc3339
+        required: false
+
+  field-uuid:
+    type: string
+    pattern: "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}"
+
+  field-orgId:
+    description: |
+      MuleSoft Anypoint Organization Id
+
+      Your Anypoint Organisation Id see: [Find your Organization ID.](https://docs.mulesoft.com/access-management/organization#find-your-organization-id)
+    example: 3a9b4984-4b75-4c42-8d1b-434f8a5da342
+    type: field-uuid
+
+  field-actionId:
+    displayName: IDP Document Action Id
+    description: Published Document Action UUID
+    example: 9026458a-868d-40b6-90e0-6e80639e0aea
+    type: field-uuid
+
+  field-actionVersion:
+    displayName: IDP Document Action Id Version
+    description: Document Action Version like 1.0.0
+    example: 1.1.0
+    type: string
+    pattern: ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9A-Za-z-][0-9A-Za-z-]*)(?:\.(?:0|[1-9A-Za-z-][0-9A-Za-z-]*))*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$
+
+  field-executionId:
+    displayName: IDP Execution Id
+    description: IDP Execution Id returned after successful submission
+    type: field-uuid
+    default: 022c61de-9bfc-4a94-8a9c-43c5f8ac153e
+    example: 022c61de-9bfc-4a94-8a9c-43c5f8ac153e
+
+
+securitySchemes:
+  mulesoft-basic-login:
+    type: Basic Authentication
+    describedBy:
+      headers:
+        Authorization:
+          description: |
+            Used to send username and password. Do not use
+            with the "access_token" query string parameter.
+          type: string
+      responses:
+        "200":
+          body:
+            application/json:
+              properties:
+                access_token:
+                  example: d127e2ec-a703-4e2a-8629-e9158804748ble
+                  type: string
+                token_type:
+                  example: bearer
+                  type: string
+
+  mulesoft-oauth_2_0:
+    type: OAuth 2.0
+    description: |
+      OAuth2 is a protocol that lets external apps request authorization to private
+      details in a user's account without getting their password. This is
+      preferred over Basic Authentication because tokens can be limited to specific
+      types of data, and can be revoked by users at any time.
+      Use apiportal for the client_id
+    settings:
+      authorizationUri: 'https://{anypointPlatformUri}/accounts/api/v2/oauth2/authorize'
+      accessTokenUri: 'https://{anypointPlatformUri}/accounts/api/v2/oauth2/token'
+      authorizationGrants: [ authorization_code, implicit, client_credentials, password ]
+    describedBy:
+      responses:
+        '401':
+          description: |
+            Bad or expired token. This can happen if the user or CloudHub
+            revoked or expired an access token. To fix, you should re-
+            authenticate the user.
+        '403':
+          description: |
+            Bad OAuth request (wrong consumer key, bad nonce, expired
+            timestamp...). Unfortunately, re-authenticating the user won't help here.
+      headers:
+        Authorization:
+          description: |
+            Used to send a valid OAuth 2 access token. Do not use
+            with the "access_token" query string parameter.
+          type: string
+      queryParameters:
+        access_token:
+          description: |
+            Used to send a valid OAuth 2 access token. Do not use together with
+            the "Authorization" header
+          type: string
